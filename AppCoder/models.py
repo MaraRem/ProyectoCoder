@@ -9,7 +9,7 @@ class Curso(models.Model):
 class Estudiante(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    emal = models.EmailField()
+    emal = models.EmailField(null=True)
 
 class Profesor(models.Model):
     nombre = models.CharField(max_length=30)
