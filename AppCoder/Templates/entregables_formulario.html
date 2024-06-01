@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+
+
+{% block ContenidoQueCambia %}
+
+<form action="{% url 'EntregableFormulario' %}" method="post"> {% csrf_token %}
+
+    {{form_entregables.as_p}}
+
+    <button type="submit"> Subir Entregable</button>
+
+</form>
+
+{% endblock ContenidoQueCambia %}
