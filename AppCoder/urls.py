@@ -12,7 +12,9 @@ from AppCoder.views import (
     entregables,
     curso_formulario,
     estudiante_formulario,
-    entregable_formulario
+    entregable_formulario,
+    busqueda_camada,
+    buscar,
     )
 
 urlpatterns = [
@@ -27,4 +29,6 @@ urlpatterns = [
     path('curso-formulario/' , curso_formulario, name='CursoFormulario'),
     path('estudiante-formulario/' , estudiante_formulario, name='EstudianteFormulario'),
     path('entregable-formulario/' , entregable_formulario, name='EntregableFormulario'),
+    path('busqueda-camada/' , busqueda_camada, name='BusquedaCamada'),
+    path('buscar/' , buscar, name='BuscarCurso'),
 ]

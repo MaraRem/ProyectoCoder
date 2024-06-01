@@ -13,7 +13,7 @@ class EstudianteFormulario(forms.Form):
 
 class EntregableFormulario(forms.Form):
     nombre = forms.CharField()
-    fechadeentrega = forms.DateField()
-    entregado = forms.BooleanField()
+    fechadeentrega = forms.DateField() 
+    
     
     

@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+
+
+{% block ContenidoQueCambia %}
+
+<p> Buscamos los Cursos con la camada n°: {{camada}} </p>
+<ul>
+  {% for curso in cursos %}
+  <li>
+    <p> {{curso.nombre}} - {{curso.camada}} </p>
+  </li>
+ {% endfor %}
+</ul>      
+{% endblock ContenidoQueCambia %}
+ 

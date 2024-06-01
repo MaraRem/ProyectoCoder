@@ -32,8 +32,6 @@ def estudiantes(req):
 def entregables(req):
      return render(req,"entregables.html", {})
 
-
-
 def curso_formulario(req):
 
     if req.method =='POST':
@@ -49,17 +47,13 @@ def curso_formulario(req):
             nuevo_curso.save()
         
             return render(req,"inicio.html", {"message": "Curso Creado!!!! "})  
-                          
         else:
-            return render(req,"inicio.html", {"message": "Tu Curso No pudo ser creado ! "})
-        
+            return render(req,"inicio.html",{"message":"Datos Invalidos"})                  
     else:
         miformulario = CursoFormulario()
 
         return render(req,"curso_formulario.html", {"miformulario":miformulario})
-    
-
-
+   
 def estudiante_formulario(req):
 
     if req.method =='POST':
@@ -75,17 +69,13 @@ def estudiante_formulario(req):
             
             nuevo_e.save()
         
-            return render(req,"inicio.html", {"message": "Estudiante Creado!!!! "})  
-                          
+            return render(req,"inicio.html", {"message": "Estudiante Creado!!!! "})                          
         else:
-            return render(req,"inicio.html", {"message": "El Estudiante No pudo ser creado ! "})
-        
+            return render(req,"inicio.html",{"message":"Datos Invalidos"})  
     else:
         form_estudiante = EstudianteFormulario()
 
         return render(req,"estudiante_formulario.html", {"form_estudiante":form_estudiante})
-
-
 
 def entregable_formulario(req):
 
@@ -107,11 +97,26 @@ def entregable_formulario(req):
             nuevo_entregable.save()
         
             return render(req,"inicio.html", {"message": "Entregables Registrado OK!!!! "})  
-                          
         else:
-            return render(req,"inicio.html", {"message": "El Entregable No pudo ser subido ! "})
-        
+            return render(req,"inicio.html",{"message":"Datos Invalidos"})                    
     else:
         form_entregables = EntregableFormulario()
 
         return render(req,"entregables_formulario.html", {"form_entregables":form_entregables})
+
+def busqueda_camada(req):
+
+    return render(req,"busqueda_camada.html",{})
+
+
+def buscar(req):
+    camada = req.GET.get('camada') 
+
+    if camada:
+        cursos = Curso.objects.filter(camada=camada) 
+        if cursos.exists():
+            return render(req, "resultado_busqueda.html", {"cursos": cursos, "camada": camada})
+        else:
+            return render(req, "inicio.html", {"message": "No se encontraron cursos para la camada."})
+    else:
+        return render(req, "inicio.html", {"message": "No enviaste los datos!"})
